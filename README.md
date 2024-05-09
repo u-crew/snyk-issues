@@ -29,6 +29,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`snyk-issues autocomplete [SHELL]`](#snyk-issues-autocomplete-shell)
 * [`snyk-issues help [COMMAND]`](#snyk-issues-help-command)
 * [`snyk-issues plugins`](#snyk-issues-plugins)
 * [`snyk-issues plugins add PLUGIN`](#snyk-issues-plugins-add-plugin)
@@ -42,6 +43,37 @@ USAGE
 * [`snyk-issues plugins update`](#snyk-issues-plugins-update)
 * [`snyk-issues sync group [GROUPID]`](#snyk-issues-sync-group-groupid)
 * [`snyk-issues sync org [FILE]`](#snyk-issues-sync-org-file)
+
+## `snyk-issues autocomplete [SHELL]`
+
+Display autocomplete installation instructions.
+
+```
+USAGE
+  $ snyk-issues autocomplete [SHELL] [-r]
+
+ARGUMENTS
+  SHELL  (zsh|bash|powershell) Shell type
+
+FLAGS
+  -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+DESCRIPTION
+  Display autocomplete installation instructions.
+
+EXAMPLES
+  $ snyk-issues autocomplete
+
+  $ snyk-issues autocomplete bash
+
+  $ snyk-issues autocomplete zsh
+
+  $ snyk-issues autocomplete powershell
+
+  $ snyk-issues autocomplete --refresh-cache
+```
+
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v3.0.17/src/commands/autocomplete/index.ts)_
 
 ## `snyk-issues help [COMMAND]`
 

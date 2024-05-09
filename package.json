@@ -52,6 +52,9 @@
     "bin": "snyk-issues",
     "dirname": "snyk-issues",
     "commands": "./dist/commands",
+    "macos": {
+      "identifier": "com.snyk.snyk-issues"
+    },
     "plugins": [
       "@oclif/plugin-autocomplete",
       "@oclif/plugin-help",
