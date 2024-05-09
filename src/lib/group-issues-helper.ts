@@ -1,6 +1,7 @@
 import got from 'got';
-import { getSnykToken, getSnykApiUrl, getSnykApiVersion, getSnykGroup } from './env.js'
-import { newFileContentWriter, appendableContentWriter } from './fileManager.js';
+
+import { getSnykApiUrl, getSnykApiVersion, getSnykGroup, getSnykToken } from './env.js'
+import { appendableContentWriter, newFileContentWriter } from './file-manager.js';
 
 
 const options = {
@@ -10,10 +11,10 @@ const options = {
   },
 };
 
-const nextUrlExists = (url: string ): boolean => url.startsWith("/rest")  ? true : false;
+const nextUrlExists = (url: string ): boolean => url.startsWith("/rest");
 
 
-export const initiateGroupIssuesSync = async () => {
+const initiateGroupIssuesSync = async () => {
   const client = got.extend(options);
   const response =  await client.get(
     `${getSnykApiUrl()}/rest/groups/${getSnykGroup()}/issues?version=${getSnykApiVersion()}`
@@ -28,8 +29,7 @@ export const initiateGroupIssuesSync = async () => {
   // get Paginated data
   await paginateGroupIssuesSync(body.links.next);
   console.log(`Group Issues Sync completed for GroupID: ${getSnykGroup()}`);
-  return;
-}
+};
 
 const paginateGroupIssuesSync = async (url: string) => {
   const client = got.extend(options);
@@ -43,5 +43,7 @@ const paginateGroupIssuesSync = async (url: string) => {
   if (body.links.next && nextUrlExists(body.links.next)) {
     await paginateGroupIssuesSync(body.links.next);
   }
-  return;
-}
+
+};
+
+export default initiateGroupIssuesSync;

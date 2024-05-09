@@ -1,15 +1,6 @@
 import dotenv from 'dotenv';
-dotenv.config();
 
-// export const client = (url:string) => {
-//   const options = {
-//     headers: {
-//       'Authorization': getSnykToken(),
-//       'Content-Type': 'application/vnd.api+json'
-//     },
-//   };
-//   return options;
-// }
+dotenv.config();
 
 export const getSnykToken = () => {
   return `Token ${process.env.SNYK_TOKEN}`;

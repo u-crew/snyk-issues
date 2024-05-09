@@ -1,6 +1,8 @@
-import { writeFileSync, readFileSync, utimesSync, openSync, closeSync, mkdirSync } from "fs";
-import { homedir } from "os";
+import { closeSync, mkdirSync, openSync, readFileSync, utimesSync, writeFileSync } from "node:fs";
+import { homedir } from "node:os";
+
 import { getSnykGroup } from "./env.js";
+import { IssueT } from "../types/issues.js";
 
 const generateDateSuffix = () => {
   const date = new Date();
@@ -19,14 +21,17 @@ const touch = () => {
   const time = new Date();
   try {
     utimesSync(filePath, time, time);
-  } catch (err) {
+  } catch (error) {
+    console.error(error);
+  } finally {
     closeSync(openSync(filePath, 'w'));
   }
 }
+
 // Ensure this is a snyc only write to create new file
 // Ideal execution is once a day
 // To-Do: Types
-export const newFileContentWriter = (issues: any) => {
+export const newFileContentWriter = (issues: IssueT[]) => {
   // Ensure file exists with utimesSync
   touch();
   // Creating a JSON Issues Object store on filesystem
