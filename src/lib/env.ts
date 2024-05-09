@@ -16,7 +16,7 @@ export const getSnykToken = () => {
 };
 
 export const getSnykApiUrl = (): string => {
-  return process.env.SNYK_API_URL ? process.env.SNYK_API_URL : 'https://api.snyk.io/rest';
+  return process.env.SNYK_API_URL ? process.env.SNYK_API_URL : 'https://api.snyk.io';
 };
 
 // Using a static default version for development

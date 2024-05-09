@@ -20,7 +20,7 @@ $ npm install -g snyk-issues-cli
 $ snyk-issues COMMAND
 running command...
 $ snyk-issues (--version)
-snyk-issues-cli/0.0.0 darwin-arm64 node-v20.12.2
+snyk-issues-cli/0.0.0 darwin-arm64 node-v20.13.0
 $ snyk-issues --help [COMMAND]
 USAGE
   $ snyk-issues COMMAND

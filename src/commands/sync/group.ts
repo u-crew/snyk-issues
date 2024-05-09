@@ -1,6 +1,7 @@
 import {Args, Command, Flags} from '@oclif/core'
-import { initiateGroupIssuesCall } from '../../lib/groupIssues.js'
-import { readFile, writeFileSync } from 'fs';
+import { initiateGroupIssuesSync } from '../../lib/groupIssuesHelper.js'
+import { appendFileSync, readFile, writeFileSync } from 'fs';
+import { homedir } from 'os';
 
 export default class SyncGroup extends Command {
   static override args = {
@@ -22,10 +23,6 @@ export default class SyncGroup extends Command {
     const {args, flags} = await this.parse(SyncGroup);
     // To-Do: Enable verbose
     this.log(`Runnung sync for Group ID: ${args.groupId}`)
-    const resp = await initiateGroupIssuesCall();
-    console.log(`Next URL: ${resp.links.next}`);
-    for (const issue of resp.data) {
-      writeFileSync('issues.json', JSON.stringify(issue), 'utf8');
-    }
+    const resp = await initiateGroupIssuesSync();
   }
 }
